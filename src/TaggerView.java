@@ -4,34 +4,31 @@ import java.util.ArrayList;
 
 public class TaggerView {
     private JPanel _tagPane;
-    private TokenPanel _token;
+    private JPanel _tokenPane;
+    private JFrame _frame;
 
     TaggerView() {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        Container content = frame.getContentPane();
-        content.setPreferredSize(new Dimension(1000, 595));
+        _frame = new JFrame();
+        _frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        Container content = _frame.getContentPane();
+        content.setPreferredSize(new Dimension(1000, 598));
         content.setLayout(null);
-        frame.setResizable(false);
+        _frame.setResizable(false);
 
-        JPanel tokenPane = new JPanel();
-        tokenPane.setBounds(0,0,600,600);
-        tokenPane.setLayout(null);
-
-        _token = new TokenPanel("C:\\Tokens\\TP83_HeroicCharacters14\\M_Fop_02_hi.png");
-        _token.setBounds(50, 45, 500, 500);
-        tokenPane.add(_token);
+        _tokenPane = new JPanel();
+        _tokenPane.setBounds(0,0,600,600);
+        _tokenPane.setLayout(null);
 
         _tagPane = new JPanel();
         _tagPane.setBounds(600,0,400,600);
         _tagPane.setLayout(new GridLayout(18, 1));
         _tagPane.setBackground(Color.LIGHT_GRAY);
-        _tagPane.add(AddTagTitle("Tags:"));
+        _tagPane.add(AddTagTitle("TAGS"));
 
-        content.add(tokenPane);
+        content.add(_tokenPane);
         content.add(_tagPane);
-        frame.pack();
-        frame.setVisible(true);
+        _frame.pack();
+        _frame.setVisible(true);
     }
 
     private JLabel AddTagTitle(String title) {
@@ -51,4 +48,12 @@ public class TaggerView {
         TagButton.SetUniqueToggle(isUnique);
         _tagPane.revalidate();
     }
+
+    public void SetToken(String tokenPath) {
+        TokenPanel token = new TokenPanel(tokenPath);
+        token.setBounds(50, 45, 500, 500);
+        _tokenPane.add(token);
+        _frame.setTitle(tokenPath);
+        _tokenPane.repaint();
+}
 }

@@ -7,5 +7,6 @@ public class Main {
         view.SetTags("TAGS", new ArrayList<>(Arrays.asList(
                 "tag", "tag", "tag", "tag", "tag", "tag", "tag", "tag",
                 "tag", "tag", "tag", "tag", "tag", "tag", "tag", "tag", "tag")), true);
+        view.SetToken("C:\\Tokens\\TP83_HeroicCharacters14\\M_Fop_02_hi.png");
     }
 }
