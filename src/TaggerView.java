@@ -51,9 +51,9 @@ public class TaggerView {
 
     public void SetToken(String tokenPath) {
         TokenPanel token = new TokenPanel(tokenPath);
-        token.setBounds(50, 45, 500, 500);
+        token.setBounds(50, 48, 500, 500);
         _tokenPane.add(token);
         _frame.setTitle(tokenPath);
         _tokenPane.repaint();
-}
+    }
 }
