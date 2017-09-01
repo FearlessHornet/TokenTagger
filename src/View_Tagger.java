@@ -11,7 +11,7 @@ public class View_Tagger {
     private JPanel _tokenPane;
     private JFrame _frame;
 
-    View_Tagger() {
+    View_Tagger(IProgressListener stateController) {
         int height = GridSize * ButtonHeight;
 
         _frame = new JFrame();
@@ -21,10 +21,18 @@ public class View_Tagger {
         content.setLayout(null);
         _frame.setResizable(false);
 
+        // Pane to hold token image
         _tokenPane = new JPanel();
         _tokenPane.setBounds(0,0,600, height);
         _tokenPane.setLayout(null);
 
+        // Bottom progress (Next/Save) button
+        Button_Progress progress = new Button_Progress(stateController);
+        int progressWidth = 3 * ButtonHeight;
+        progress.setBounds(600 - progressWidth,height - ButtonHeight, progressWidth, ButtonHeight);
+        _tokenPane.add(progress);
+
+        // RHS Tag Button panel
         _tagPane = new JPanel();
         _tagPane.setBounds(600,0,400, height);
         _tagPane.setLayout(new GridLayout(GridSize, 1));
