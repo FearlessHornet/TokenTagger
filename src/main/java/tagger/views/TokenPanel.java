@@ -1,3 +1,5 @@
+package tagger.views;
+
 import javafx.util.Pair;
 
 import java.awt.Graphics;
@@ -7,13 +9,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class View_TokenPanel extends JPanel {
+public class TokenPanel extends JPanel {
 
     private BufferedImage image;
     private int radiusX = 0;
     private int radiusY = 0;
 
-    View_TokenPanel(String tokenPath) {
+    TokenPanel(String tokenPath) {
         try {
             image = ImageIO.read(new File(tokenPath));
             radiusX = image.getWidth() / 2;

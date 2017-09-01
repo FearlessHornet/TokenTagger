@@ -1,10 +1,14 @@
+import tagger.Tagger;
+import tagger.TokenManager;
+import tagger.views.TaggerView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Main {
+public class TokenTagger {
     public static void main(String[] args) {
-        Controller_Token controller = new Controller_Token();
-        View_Tagger view = new View_Tagger(null);
+        TokenManager tokenManager = new TokenManager();
+        TaggerView view = new TaggerView(new Tagger());
         view.SetTags("TAGS", new ArrayList<>(Arrays.asList(
                 "tag", "tag", "tag", "tag", "tag", "tag", "tag", "tag",
                 "tag", "tag", "tag", "tag", "tag", "tag", "tag", "tag", "tag")), true);

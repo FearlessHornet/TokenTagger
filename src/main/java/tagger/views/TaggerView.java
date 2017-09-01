@@ -1,8 +1,14 @@
+package tagger.views;
+
+import tagger.IProgressListener;
+import tagger.views.buttons.ProgressButton;
+import tagger.views.buttons.TagButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class View_Tagger {
+public class TaggerView {
     private static final int MaxTags = 17;
     private static final int GridSize = MaxTags + 1;
     private static final int ButtonHeight = 34;
@@ -11,7 +17,7 @@ public class View_Tagger {
     private JPanel _tokenPane;
     private JFrame _frame;
 
-    View_Tagger(IProgressListener stateController) {
+    public TaggerView(IProgressListener stateController) {
         int height = GridSize * ButtonHeight;
 
         _frame = new JFrame();
@@ -26,8 +32,8 @@ public class View_Tagger {
         _tokenPane.setBounds(0,0,600, height);
         _tokenPane.setLayout(null);
 
-        // Bottom progress (Next/Save) button
-        Button_Progress progress = new Button_Progress(stateController);
+        // Bottom onProgress (Next/Save) button
+        ProgressButton progress = new ProgressButton(stateController);
         int progressWidth = 3 * ButtonHeight;
         progress.setBounds(600 - progressWidth,height - ButtonHeight, progressWidth, ButtonHeight);
         _tokenPane.add(progress);
@@ -54,12 +60,12 @@ public class View_Tagger {
 
     public void SetTags(String tagTitle, ArrayList<String> tags, boolean isUnique) {
         _tagPane.removeAll();
-        Button_Tag.ResetGroup();
+        TagButton.ResetGroup();
         _tagPane.add(AddTagTitle(tagTitle));
         for (String tag : tags) {
-            _tagPane.add(new Button_Tag(tag));
+            _tagPane.add(new TagButton(tag));
         }
-        Button_Tag.SetUniqueToggle(isUnique);
+        TagButton.SetUniqueToggle(isUnique);
         _tagPane.revalidate();
     }
 
@@ -67,7 +73,7 @@ public class View_Tagger {
         int margin = ButtonHeight;
         int height = (GridSize - 2) * ButtonHeight;
 
-        View_TokenPanel token = new View_TokenPanel(tokenPath);
+        TokenPanel token = new TokenPanel(tokenPath);
         token.setBounds(margin, margin, 600 - (2 * margin), height);
         _tokenPane.add(token);
         _frame.setTitle(tokenPath);

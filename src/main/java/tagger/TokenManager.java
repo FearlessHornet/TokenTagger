@@ -1,13 +1,15 @@
+package tagger;
+
 import java.io.File;
 import java.util.Stack;
 
-public class Controller_Token {
+public class TokenManager {
     private static final String BaseDir = "C:/Tokens";
     private Stack<String> _directories;
     private Stack<String> _files;
     private String _dir;
 
-    Controller_Token() {
+    public TokenManager() {
         _directories = new Stack<String>();
         _files = new Stack<String>();
         File dir = new File(BaseDir);
@@ -27,7 +29,7 @@ public class Controller_Token {
         String[] dirList = tpDir.list();
         assert dirList != null;
         for (String file : dirList) {
-            if (file.contains(".png") && !file.contains("tag_")) {
+            if (file.contains(".png") && !file.contains("tag0")) {
                 _files.add(file);
             }
         }

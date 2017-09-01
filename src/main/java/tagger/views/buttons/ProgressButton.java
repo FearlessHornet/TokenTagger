@@ -1,14 +1,18 @@
+package tagger.views.buttons;
+
+import tagger.IProgressListener;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Button_Progress extends JButton implements ActionListener {
+public class ProgressButton extends JButton implements ActionListener {
     private boolean _lastStep = false;
     private IProgressListener _controller;
 
-    Button_Progress(IProgressListener listener) {
+    public ProgressButton(IProgressListener listener) {
         super();
 
         _controller = listener;
@@ -30,9 +34,9 @@ public class Button_Progress extends JButton implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (_lastStep) {
-            _controller.complete();
+            _controller.onComplete();
             return;
         }
-        _controller.progress();
+        _controller.onProgress();
     }
 }
