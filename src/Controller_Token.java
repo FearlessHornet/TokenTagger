@@ -1,13 +1,13 @@
 import java.io.File;
 import java.util.Stack;
 
-public class TokenController {
+public class Controller_Token {
     private static final String BaseDir = "C:/Tokens";
     private Stack<String> _directories;
     private Stack<String> _files;
     private String _dir;
 
-    TokenController() {
+    Controller_Token() {
         _directories = new Stack<String>();
         _files = new Stack<String>();
         File dir = new File(BaseDir);

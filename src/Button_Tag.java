@@ -1,16 +1,15 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class TagButton extends JButton implements ActionListener {
+public class Button_Tag extends JButton implements ActionListener {
     private static boolean _toggleGroup = false;
 
-    private static ArrayList<TagButton> _group = null;
-    private static ArrayList<TagButton> GetGroup() {
+    private static ArrayList<Button_Tag> _group = null;
+    private static ArrayList<Button_Tag> GetGroup() {
         if (_group == null) {
             _group = new ArrayList<>();
         }
@@ -27,7 +26,7 @@ public class TagButton extends JButton implements ActionListener {
 
     public static ArrayList<String> GetChosenTags() {
         ArrayList<String> tags = new ArrayList<>();
-        for (TagButton btn : GetGroup()) {
+        for (Button_Tag btn : GetGroup()) {
             if (btn.isSelected()) {
                 tags.add(btn.getText().toLowerCase());
             }
@@ -35,7 +34,7 @@ public class TagButton extends JButton implements ActionListener {
         return tags;
     }
 
-    TagButton(String label) {
+    Button_Tag(String label) {
         super(label);
 
         setSelected(false);
@@ -58,7 +57,7 @@ public class TagButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (!isSelected()) {
             if (_toggleGroup) {
-                for (TagButton btn : GetGroup()) {
+                for (Button_Tag btn : GetGroup()) {
                     btn.setSelected(false);
                 }
             }
