@@ -1,0 +1,165 @@
+{
+	"tags": [
+		{
+			"unique": true,
+			"unknown": true,
+			"tags": [
+				"Male",
+				"Female",
+				"Androgynous"
+			]
+		},
+		{
+			"unique": true,
+			"unknown": true,
+			"tags": [
+				"Changeling",
+				"Dragonborn",
+				"Dwarf",
+				"Elf",
+				"Gnome",
+				"Half-Elf",
+				"Halfling",
+				"Human",
+				"Orc",
+				"Tiefling"
+			]
+		},
+		{
+			"unique": false,
+			"unknown": false,
+			"tags": [
+				"Bald",
+				"Beard",
+				"Injured",
+				"Old",
+				"Paint",
+				"Tattoo"
+			]
+		},
+		{
+			"unique": true,
+			"unknown": false,
+			"tags": [
+				"Unarmoured",
+				"Breastplate",
+				"Plate",
+				"Scale",
+				"Splint",
+				"Chainmail",
+				"Leather",
+				"Padded",
+				"Boned",
+				"Wooden"
+			]
+		},
+		{
+			"unique": false,
+			"unknown": false,
+			"tags": [
+				"Cloak",
+				"Eyewear",
+				"Gilded",
+				"Hat",
+				"Helm",
+				"Heraldry",
+				"Hood",
+				"Jewellery",
+				"Mask",
+				"Robes",
+				"Shackles",
+				"Shield"
+			]
+		},
+		{
+			"unique": true,
+			"unknown": false,
+			"tags": [
+				"Unarmed",
+				"Magic",
+				"Melee",
+				"Ranged"
+			]
+		},
+		{
+			"unique": false,
+			"unknown": false,
+			"tags": [
+				"Axe",
+				"Club",
+				"Dagger",
+				"Flail",
+				"Hammer",
+				"Mace",
+				"Pick",
+				"Polearm",
+				"Quarterstaff",
+				"Sword",
+				"Staff",
+				"Wand",
+				"Whip",
+				"Bow",
+				"Crossbow",
+				"Handbow",
+				"Gun"
+			]
+		},
+		{
+			"unique": false,
+			"unknown": false,
+			"tags": [
+				"Dual-Wield",
+				"Holy",
+				"Particles",
+				"Sneak",
+				"Thrown",
+				"Two-Handed"
+			]
+		},
+		{
+			"unique": true,
+			"unknown": false,
+			"tags": [
+				"(None)",
+				"Alchemist",
+				"Barbarian",
+				"Bard",
+				"Cleric",
+				"Druid",
+				"Monk",
+				"Paladin",
+				"Ranger",
+				"Rogue",
+				"Warlock",
+				"Warrior",
+				"Wizard"
+			]
+		},
+		{
+			"unique": true,
+			"unknown": false,
+			"tags": [
+				"(None)",
+				"Citizen",
+				"Merchant",
+				"Noble",
+				"Outlaw",
+				"Peasant",
+				"Scholar"
+			]
+		},
+		{
+			"unique": false,
+			"unknown": false,
+			"tags": [
+				"Book",
+				"Backpack",
+				"Food",
+				"Instrument",
+				"Mug",
+				"Potion",
+				"Scroll"
+			]
+		}
+	]
+}
