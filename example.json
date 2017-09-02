@@ -1,8 +1,9 @@
 {
-	"tags": [
+	"tag_sets": [
 		{
 			"unique": true,
 			"unknown": true,
+			"none": false,
 			"tags": [
 				"Male",
 				"Female",
@@ -12,6 +13,7 @@
 		{
 			"unique": true,
 			"unknown": true,
+			"none": false,
 			"tags": [
 				"Changeling",
 				"Dragonborn",
@@ -28,6 +30,7 @@
 		{
 			"unique": false,
 			"unknown": false,
+			"none": false,
 			"tags": [
 				"Bald",
 				"Beard",
@@ -40,6 +43,7 @@
 		{
 			"unique": true,
 			"unknown": false,
+			"none": false,
 			"tags": [
 				"Unarmoured",
 				"Breastplate",
@@ -56,6 +60,7 @@
 		{
 			"unique": false,
 			"unknown": false,
+			"none": false,
 			"tags": [
 				"Cloak",
 				"Eyewear",
@@ -74,6 +79,7 @@
 		{
 			"unique": true,
 			"unknown": false,
+			"none": false,
 			"tags": [
 				"Unarmed",
 				"Magic",
@@ -84,6 +90,7 @@
 		{
 			"unique": false,
 			"unknown": false,
+			"none": false,
 			"tags": [
 				"Axe",
 				"Club",
@@ -107,6 +114,7 @@
 		{
 			"unique": false,
 			"unknown": false,
+			"none": false,
 			"tags": [
 				"Dual-Wield",
 				"Holy",
@@ -119,8 +127,8 @@
 		{
 			"unique": true,
 			"unknown": false,
+			"none": true,
 			"tags": [
-				"(None)",
 				"Alchemist",
 				"Barbarian",
 				"Bard",
@@ -138,8 +146,8 @@
 		{
 			"unique": true,
 			"unknown": false,
+			"none": true,
 			"tags": [
-				"(None)",
 				"Citizen",
 				"Merchant",
 				"Noble",
@@ -151,6 +159,7 @@
 		{
 			"unique": false,
 			"unknown": false,
+			"none": false,
 			"tags": [
 				"Book",
 				"Backpack",
