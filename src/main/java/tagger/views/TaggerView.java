@@ -22,6 +22,7 @@ public class TaggerView implements ActionListener {
     private JFrame _frame;
     private ProgressButton _progress;
     private ISkipListener _skipListener;
+    private TokenPanel _token;
 
     public TaggerView(IProgressListener stateController, ISkipListener skipListener) {
         int height = GridSize * ButtonHeight;
@@ -90,9 +91,13 @@ public class TaggerView implements ActionListener {
         int margin = ButtonHeight;
         int height = (GridSize - 2) * ButtonHeight;
 
-        TokenPanel token = new TokenPanel(tokenPath);
-        token.setBounds(margin, margin, 600 - (2 * margin), height);
-        _tokenPane.add(token);
+        if (_token != null) {
+            _tokenPane.remove(_token);
+        }
+
+        _token = new TokenPanel(tokenPath);
+        _token.setBounds(margin, margin, 600 - (2 * margin), height);
+        _tokenPane.add(_token);
         _frame.setTitle(tokenPath);
         _tokenPane.repaint();
     }
