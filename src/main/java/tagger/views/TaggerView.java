@@ -1,14 +1,18 @@
 package tagger.views;
 
 import tagger.IProgressListener;
+import tagger.ISkipListener;
 import tagger.views.buttons.ProgressButton;
 import tagger.views.buttons.TagButton;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class TaggerView {
+public class TaggerView implements ActionListener {
     private static final int MaxTags = 17;
     private static final int GridSize = MaxTags + 1;
     private static final int ButtonHeight = 34;
@@ -17,9 +21,11 @@ public class TaggerView {
     private JPanel _tokenPane;
     private JFrame _frame;
     private ProgressButton _progress;
+    private ISkipListener _skipListener;
 
-    public TaggerView(IProgressListener stateController) {
+    public TaggerView(IProgressListener stateController, ISkipListener skipListener) {
         int height = GridSize * ButtonHeight;
+        _skipListener = skipListener;
 
         _frame = new JFrame();
         _frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -33,11 +39,21 @@ public class TaggerView {
         _tokenPane.setBounds(0,0,600, height);
         _tokenPane.setLayout(null);
 
-        // Bottom onProgress (Next/Save) button
+        // Bottom right button, onProgress (Next/Save)
         _progress = new ProgressButton(stateController);
         int progressWidth = 3 * ButtonHeight;
         _progress.setBounds(600 - progressWidth,height - ButtonHeight, progressWidth, ButtonHeight);
         _tokenPane.add(_progress);
+
+        // Bottom left button, onSkip (Skip)
+        JButton skip = new JButton("SKIP");
+        skip.addActionListener(this);
+        skip.setBackground(Color.YELLOW);
+        Border emptyBorder = BorderFactory.createEmptyBorder();
+        skip.setBorder(emptyBorder);
+        skip.setFocusable(false);
+        skip.setBounds(0,height - ButtonHeight, progressWidth, ButtonHeight);
+        _tokenPane.add(skip);
 
         // RHS Tag Button panel
         _tagPane = new JPanel();
@@ -83,5 +99,9 @@ public class TaggerView {
 
     public void setLastState(boolean isLast) {
         _progress.setState(isLast);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        _skipListener.onSkip();
     }
 }

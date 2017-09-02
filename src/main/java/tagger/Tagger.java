@@ -48,17 +48,20 @@ public class Tagger implements IProgressListener {
     private String saveBuffer() {
         _buffer.deleteCharAt(_buffer.length() - 1);
         _buffer.append("].png");
-
         String output = _buffer.toString();
-
-        _buffer.setLength(0);
-        _unknownAdded = false;
-
+        resetState();
         return output;
     }
 
     private void updateState() {
         _listener.onStateChange(_tagManager.getTags(), _tagManager.isUnique(), _tagManager.isLastTagSet());
+    }
+
+    public void resetState() {
+        _buffer.setLength(0);
+        _unknownAdded = false;
+        _tagManager.reset();
+        updateState();
     }
 
     public void onProgress() {

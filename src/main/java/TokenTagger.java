@@ -1,3 +1,4 @@
+import tagger.ISkipListener;
 import tagger.IStateChangeListener;
 import tagger.Tagger;
 import tagger.TokenManager;
@@ -7,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class TokenTagger implements IStateChangeListener {
+public class TokenTagger implements IStateChangeListener, ISkipListener {
     private TokenManager _tokenManager;
     private Tagger _tagger;
     private TaggerView _view;
@@ -20,7 +21,7 @@ public class TokenTagger implements IStateChangeListener {
     private TokenTagger(String configPath) throws IOException {
         _tokenManager = new TokenManager();
         _tagger = new Tagger(configPath);
-        _view = new TaggerView(_tagger);
+        _view = new TaggerView(_tagger, this);
 
         changeToken();
         _tagger.init(this);
@@ -45,5 +46,10 @@ public class TokenTagger implements IStateChangeListener {
     public void onStateChange(ArrayList<String> newTags, boolean isUnique, boolean isLast) {
         _view.setTags(isUnique ? "PICK ONE" : "PICK SOME", newTags, isUnique);
         _view.setLastState(isLast);
+    }
+
+    public void onSkip() {
+        changeToken();
+        _tagger.resetState();
     }
 }
