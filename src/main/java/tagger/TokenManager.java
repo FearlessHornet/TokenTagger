@@ -22,7 +22,7 @@ public class TokenManager {
         }
     }
 
-    private void NextTokenPack() {
+    private void nextTokenPack() {
         assert _directories.size() > 0;
         _dir = _directories.pop();
         File tpDir = new File(BaseDir + "/" + _dir);
@@ -36,15 +36,19 @@ public class TokenManager {
 
         // Validate there's tokens in the stack
         if (_files.size() == 0) {
-            NextTokenPack();
+            nextTokenPack();
         }
     }
 
-    public String NextToken() {
+    public String nextToken() {
         // Ensure tokens are in the stack
         if (_files.size() == 0) {
-            NextTokenPack();
+            nextTokenPack();
         }
-        return BaseDir + "/" + _dir + "/" + _files.pop();
+        return getDirectory() + _files.pop();
+    }
+
+    public String getDirectory() {
+        return BaseDir + "/" + _dir + "/";
     }
 }

@@ -16,6 +16,11 @@ public class Tagger implements IProgressListener {
         _buffer = new StringBuffer();
     }
 
+    public void init(IStateChangeListener listener) {
+        _listener = listener;
+        updateState();
+    }
+
     private void addTag(String tag) {
         // Handle special tags
         if (tag.contentEquals(TagManager.NoneTag)) {
@@ -32,7 +37,7 @@ public class Tagger implements IProgressListener {
         if (_buffer.length() < 4) {
             Random rng = new Random();
             _buffer.append("tag0");
-            _buffer.append(String.format("%04H", rng.nextInt(0xFFFF)).toUpperCase());
+            _buffer.append(String.format("%04x", rng.nextInt(0xFFFF)).toUpperCase());
             _buffer.append("[");
         }
 
@@ -54,10 +59,6 @@ public class Tagger implements IProgressListener {
 
     private void updateState() {
         _listener.onStateChange(_tagManager.getTags(), _tagManager.isUnique(), _tagManager.isLastTagSet());
-    }
-
-    public void setStateChangeListener(IStateChangeListener listener) {
-        _listener = listener;
     }
 
     public void onProgress() {

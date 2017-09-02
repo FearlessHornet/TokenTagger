@@ -1,8 +1,8 @@
 package tagger;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface IStateChangeListener {
     void onSave(String taggedFilename);
-    void onStateChange(List<String> newTags, boolean isUnique, boolean isLast);
+    void onStateChange(ArrayList<String> newTags, boolean isUnique, boolean isLast);
 }
