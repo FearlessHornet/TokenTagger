@@ -11,6 +11,10 @@ import javax.json.*;
 
 public class TagManager {
     private ArrayList<TagSet> _tags;
+    private int _index = 0;
+
+    static final String UnknownTag = "Unkown";
+    static final String NoneTag = "(None)";
 
     TagManager(String configPath) throws IOException {
         // JSON setup
@@ -27,5 +31,33 @@ public class TagManager {
         rawTagSets.forEach(rawTag -> _tags.add(TagSet.FromJson(rawTag)));
     }
 
+    void reset() {
+        _index = 0;
+    }
 
+    void moveNext() {
+       _index++;
+       assert _index < _tags.size();
+    }
+
+    ArrayList<String> getTags() {
+        ArrayList<String> tags = new ArrayList<>();
+        TagSet model = _tags.get(_index);
+        if (model.hasUnknown()) {
+            tags.add(UnknownTag);
+        }
+        if (model.hasNone()) {
+            tags.add(NoneTag);
+        }
+        tags.addAll(model.getTags());
+        return tags;
+    }
+
+    boolean isLastTagSet() {
+        return _index + 1 >= _tags.size();
+    }
+
+    boolean isUnique() {
+        return _tags.get(_index).isUnique();
+    }
 }
