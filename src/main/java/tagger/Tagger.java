@@ -42,7 +42,7 @@ public class Tagger implements IProgressListener {
         }
 
         // Do it
-        _buffer.append(tag).append(",");
+        _buffer.append(tag.toLowerCase()).append(",");
     }
 
     private String saveBuffer() {

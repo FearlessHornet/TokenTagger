@@ -30,7 +30,7 @@ public class TagButton extends JButton implements ActionListener {
         ArrayList<String> tags = new ArrayList<>();
         for (TagButton btn : GetGroup()) {
             if (btn.isSelected()) {
-                tags.add(btn.getText().toLowerCase());
+                tags.add(btn.getText());
             }
         }
         return tags;
