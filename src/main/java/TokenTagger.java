@@ -6,8 +6,6 @@ import tagger.views.TaggerView;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class TokenTagger implements IStateChangeListener {
     private TokenManager _tokenManager;
@@ -30,7 +28,8 @@ public class TokenTagger implements IStateChangeListener {
 
     private void changeToken() {
         _currentTokenPath = _tokenManager.nextToken();
-        _view.SetToken(_currentTokenPath);
+        _view.setToken(_currentTokenPath);
+        _view.setLastState(false);
     }
 
     public void onSave(String taggedFilename) {
@@ -44,6 +43,7 @@ public class TokenTagger implements IStateChangeListener {
     }
 
     public void onStateChange(ArrayList<String> newTags, boolean isUnique, boolean isLast) {
-        _view.SetTags(isUnique ? "PICK ONE" : "PICK SOME", newTags, isUnique);
+        _view.setTags(isUnique ? "PICK ONE" : "PICK SOME", newTags, isUnique);
+        _view.setLastState(isLast);
     }
 }

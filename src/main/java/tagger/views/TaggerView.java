@@ -16,6 +16,7 @@ public class TaggerView {
     private JPanel _tagPane;
     private JPanel _tokenPane;
     private JFrame _frame;
+    private ProgressButton _progress;
 
     public TaggerView(IProgressListener stateController) {
         int height = GridSize * ButtonHeight;
@@ -33,17 +34,17 @@ public class TaggerView {
         _tokenPane.setLayout(null);
 
         // Bottom onProgress (Next/Save) button
-        ProgressButton progress = new ProgressButton(stateController);
+        _progress = new ProgressButton(stateController);
         int progressWidth = 3 * ButtonHeight;
-        progress.setBounds(600 - progressWidth,height - ButtonHeight, progressWidth, ButtonHeight);
-        _tokenPane.add(progress);
+        _progress.setBounds(600 - progressWidth,height - ButtonHeight, progressWidth, ButtonHeight);
+        _tokenPane.add(_progress);
 
         // RHS Tag Button panel
         _tagPane = new JPanel();
         _tagPane.setBounds(600,0,400, height);
         _tagPane.setLayout(new GridLayout(GridSize, 1));
         _tagPane.setBackground(Color.LIGHT_GRAY);
-        _tagPane.add(AddTagTitle("TAGS"));
+        _tagPane.add(addTagTitle("TAGS"));
 
         content.add(_tokenPane);
         content.add(_tagPane);
@@ -51,17 +52,17 @@ public class TaggerView {
         _frame.setVisible(true);
     }
 
-    private JLabel AddTagTitle(String title) {
+    private JLabel addTagTitle(String title) {
         JLabel label = new JLabel(title.toUpperCase(), JLabel.CENTER);
         label.setForeground(Color.DARK_GRAY);
         label.setFont(new Font(Font.MONOSPACED, Font.BOLD, 22));
         return label;
     }
 
-    public void SetTags(String tagTitle, ArrayList<String> tags, boolean isUnique) {
+    public void setTags(String tagTitle, ArrayList<String> tags, boolean isUnique) {
         _tagPane.removeAll();
         TagButton.ResetGroup();
-        _tagPane.add(AddTagTitle(tagTitle));
+        _tagPane.add(addTagTitle(tagTitle));
         for (String tag : tags) {
             _tagPane.add(new TagButton(tag));
         }
@@ -69,7 +70,7 @@ public class TaggerView {
         _tagPane.revalidate();
     }
 
-    public void SetToken(String tokenPath) {
+    public void setToken(String tokenPath) {
         int margin = ButtonHeight;
         int height = (GridSize - 2) * ButtonHeight;
 
@@ -78,5 +79,9 @@ public class TaggerView {
         _tokenPane.add(token);
         _frame.setTitle(tokenPath);
         _tokenPane.repaint();
+    }
+
+    public void setLastState(boolean isLast) {
+        _progress.setState(isLast);
     }
 }
