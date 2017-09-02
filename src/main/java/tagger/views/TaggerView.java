@@ -85,6 +85,7 @@ public class TaggerView implements ActionListener {
         }
         TagButton.SetUniqueToggle(isUnique);
         _tagPane.revalidate();
+        _tagPane.repaint();
     }
 
     public void setToken(String tokenPath) {
